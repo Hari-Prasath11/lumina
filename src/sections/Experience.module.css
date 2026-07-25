@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════════════════════
+   EXPERIENCE — minimal editorial list. Hairline-divided rows,
+   generous whitespace, no cards, no glow. Chrome used sparingly.
+   ═══════════════════════════════════════════════════════════════ */
+
+.wrap {
+  position: relative;
+}
+
+/* Vertical stack of roles, divided only by hairlines. */
+.list {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid var(--line);
+}
+
+/* Each role = a row separated by a top hairline + big vertical padding. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.28fr) 1fr;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--line);
+  transition: border-color var(--dur) var(--ease-out);
+}
+
+/* Subtle hover: lighten the row's dividing rules + role. */
+.row:hover {
+  border-bottom-color: var(--line-strong);
+}
+.row:hover .role {
+  color: var(--text);
+}
+
+/* ── LEFT column — period + status ── */
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding-top: 0.4rem; /* optically align with the display role */
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+/* Tiny mono "Now" pill — hairline border + mint dot. */
+.nowPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.28rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+}
+.nowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent);
+}
+
+/* ── RIGHT column — content ── */
+.body {
+  min-width: 0;
+}
+
+.role {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: 1.05;
+  color: var(--text);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.company {
+  margin-top: 0.5rem;
+  font-size: var(--fs-body);
+  color: var(--text-dim);
+}
+
+.summary {
+  margin-top: 1.25rem;
+  max-width: 56ch;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+/* ── Clean minimal points list — mono em-dash bullets ── */
+.points {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.point {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr;
+  gap: 0.5rem;
+  max-width: 66ch;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.bullet {
+  font-family: var(--font-mono);
+  color: var(--text-mute);
+  user-select: none;
+  line-height: inherit;
+}
+
+/* ── Stack — small mono, comma-joined ── */
+.stack {
+  margin-top: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+/* ── Responsive: single column, period above role ── */
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 0;
+  }
+}

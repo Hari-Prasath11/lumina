@@ -1,0 +1,225 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1500px;
+  margin-inline: auto;
+  padding: clamp(6rem, 11vh, 8rem) var(--gutter) clamp(2.5rem, 6vh, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.25rem, 2.5vh, 2rem);
+  pointer-events: none;
+}
+.content a,
+.content button,
+.content .cutout {
+  pointer-events: auto;
+}
+
+/* Eyebrow row (centred, top) */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(156, 245, 196, 0.6);
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(156, 245, 196, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(156, 245, 196, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(156, 245, 196, 0);
+  }
+}
+.loc {
+  color: var(--text-mute);
+}
+
+/* ── Stage: centred wordmark ── */
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 13.5vw, 13rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  /* pushed down so the seated figure's head clears the nav */
+  transform: translateY(clamp(2rem, 8vh, 6.5rem));
+}
+
+/* First line wraps the "Hari" mask so the cutout can anchor to the H even
+   though the whole wordmark is centred. */
+.firstLine {
+  position: relative;
+  align-self: center;
+  width: fit-content;
+}
+
+.nameMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.nameLine {
+  display: block;
+  background: linear-gradient(
+    100deg,
+    #c9b8ff 0%,
+    #a9c7ff 22%,
+    #cfe6f0 44%,
+    #ece4d3 68%,
+    #f2dcc4 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: chromeShift 8s var(--ease-in-out) infinite alternate;
+}
+.name > .nameMask .nameLine {
+  animation-delay: -4s;
+}
+@keyframes chromeShift {
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+/* ── Portrait cutout sitting on the H ── anchored in em to the "Hari" box */
+.cutout {
+  position: absolute;
+  z-index: 2;
+  left: -0.1em;
+  top: -0.47em;
+  height: 1.12em;
+  width: auto;
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.55));
+  transition: transform var(--dur) var(--ease-spring);
+  will-change: transform;
+}
+.cutout:hover {
+  transform: translateY(-6px);
+}
+
+/* ── Footer (centred) ── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.1rem, 2.4vh, 1.75rem);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.2vw, 0.98rem);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.role {
+  color: var(--text);
+}
+.sep {
+  color: var(--text-mute);
+}
+.tagline {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-mute);
+}
+.socials a {
+  position: relative;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.socials a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--chrome);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.socials a:hover {
+  color: var(--text);
+}
+.socials a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 640px) {
+  .name {
+    font-size: clamp(2.3rem, 15vw, 4.5rem);
+  }
+  .socials {
+    gap: 1rem 1.25rem;
+    font-size: var(--fs-xs);
+  }
+}

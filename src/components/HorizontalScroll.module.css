@@ -1,0 +1,59 @@
+.wrap {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+}
+
+/* Horizontal progress bar */
+.progress {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(1.5rem, 4vh, 2.5rem);
+  height: 1px;
+  background: var(--line);
+}
+.bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: var(--grad-brand);
+}
+
+/* ── Touch / narrow: native horizontal swipe, no pinning ── */
+@media (max-width: 900px), (pointer: coarse) {
+  .sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sticky::-webkit-scrollbar {
+    display: none;
+  }
+  .track {
+    transform: none !important;
+  }
+  .progress {
+    display: none;
+  }
+}

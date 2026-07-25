@@ -1,0 +1,11 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--grad-brand);
+  z-index: var(--z-nav);
+  box-shadow: 0 0 12px rgba(200, 210, 235, 0.5);
+}

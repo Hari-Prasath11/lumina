@@ -3,16 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Interactive WebGL portfolio for Hari Prasath P — Full Stack Developer",
+  "description": "Portfolio of Hari Prasath P — Full-Stack Engineer, Co-Founder of Glide",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^11.11.11",
-    "gsap": "^3.12.5",
-    "lenis": "^1.1.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

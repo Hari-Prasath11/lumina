@@ -1,91 +1,53 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import SectionHeading from '../components/SectionHeading'
-import Reveal from '../components/Reveal'
 import { experience } from '../data/content'
-import styles from './Experience.module.css'
-
-const EASE = [0.22, 1, 0.36, 1]
-
-const pointsContainer = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.06, delayChildren: 0.04 } },
-}
-const pointItem = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
-}
-
-function Row({ job }) {
-  const reduce = useReducedMotion()
-
-  const pointsMotion = reduce
-    ? {}
-    : {
-        variants: pointsContainer,
-        initial: 'hidden',
-        whileInView: 'show',
-        viewport: { once: true, margin: '0px 0px -12% 0px' },
-      }
-
-  return (
-    <Reveal as="li" className={styles.row} amount={0.15} data-cursor="Role">
-      {/* LEFT — period + status */}
-      <div className={styles.meta}>
-        <span className={styles.period}>{job.period}</span>
-        {job.current && (
-          <span className={styles.nowPill}>
-            <span className={styles.nowDot} aria-hidden="true" />
-            Now
-          </span>
-        )}
-      </div>
-
-      {/* RIGHT — role, company, summary, points, stack */}
-      <div className={styles.body}>
-        <h3 className={styles.role}>{job.role}</h3>
-        <p className={styles.company}>{job.company}</p>
-        <p className={styles.summary}>{job.summary}</p>
-
-        <motion.ul className={styles.points} {...pointsMotion}>
-          {job.points.map((point, i) => (
-            <motion.li
-              key={i}
-              className={styles.point}
-              variants={reduce ? undefined : pointItem}
-            >
-              <span className={styles.bullet} aria-hidden="true">
-                —
-              </span>
-              <span>{point}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
-
-        <p className={styles.stack} aria-label="Technologies used">
-          {job.stack.join(', ')}
-        </p>
-      </div>
-    </Reveal>
-  )
-}
+import Section from './Section'
+import { ArrowUpRight } from './icons'
 
 export default function Experience() {
   return (
-    <section id="experience" className={`section ${styles.wrap}`}>
-      <div className="container">
-        <SectionHeading
-          index="02"
-          eyebrow="Experience"
-          title="Where I've made impact"
-          highlight="impact"
-        />
+    <Section id="experience" index="02" eyebrow="Experience" title="Where I’ve worked" className="section--alt">
+      <ol className="timeline">
+        {experience.map((job) => (
+          <li key={job.company} className="job" data-reveal data-spotlight>
+            <div className="job__aside">
+              {job.logo ? (
+                <img className="job__logo job__logo--img" src={job.logo} alt="" width="48" height="48" />
+              ) : (
+                <span className="job__logo" aria-hidden="true">
+                  {job.initials}
+                </span>
+              )}
+              <div>
+                <h3 className="job__company">
+                  {job.url ? (
+                    <a href={job.url} target="_blank" rel="noreferrer">
+                      {job.company} <ArrowUpRight />
+                    </a>
+                  ) : (
+                    job.company
+                  )}
+                </h3>
+                <p className="job__about">{job.about}</p>
+              </div>
+            </div>
 
-        <ol className={styles.list}>
-          {experience.map((job) => (
-            <Row key={job.id} job={job} />
-          ))}
-        </ol>
-      </div>
-    </section>
+            <div className="job__roles">
+              {job.roles.map((role) => (
+                <div key={role.title} className="role">
+                  <div className="role__head">
+                    <h4 className="role__title">{role.title}</h4>
+                    <span className="role__period">{role.period}</span>
+                  </div>
+                  <ul className="role__points">
+                    {role.points.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </Section>
   )
 }

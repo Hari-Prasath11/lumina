@@ -1,16 +1,15 @@
-export default function Section({ id, index, eyebrow, title, children, className = '' }) {
+export default function Section({ id, index, label, title, children }) {
   return (
-    <section id={id} className={`section ${className}`} aria-labelledby={`${id}-title`}>
-      <div className="container">
-        <div className="section__head" data-reveal>
-          <span className="eyebrow">
-            <span className="eyebrow__index">{index}</span>
-            {eyebrow}
+    <section id={id} className="ed-section" aria-labelledby={`${id}-title`}>
+      <div className="ed-wrap">
+        <header className="ed-head" data-reveal>
+          <span className="ed-label">
+            <span>{index}</span> {label}
           </span>
-          <h2 id={`${id}-title`} className="section__title">
+          <h2 id={`${id}-title`} className="ed-title">
             {title}
           </h2>
-        </div>
+        </header>
         {children}
       </div>
     </section>

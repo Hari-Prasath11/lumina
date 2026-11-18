@@ -13,8 +13,8 @@ export const profile = {
   github: 'https://github.com/Hari-Prasath11',
   githubHandle: 'Hari-Prasath11',
   resume: '/Hari-Prasath-Resume.pdf',
-  // Full-body photo with a transparent background, shown standing beside the name slide
-  founderPhoto: '/hari-cutout.webp',
+  // Half-length photo (transparent background), shown beside the name slide
+  founderPhoto: '/hari-half.webp',
   summary:
     'Full-stack developer with 2+ years of experience building scalable web applications across 8+ products using Python, FastAPI, Flask, Django and React, backed by PostgreSQL and MongoDB. Co-founder of Glide, a WhatsApp-first clinic platform that lets patients skip crowded waiting halls.',
 }

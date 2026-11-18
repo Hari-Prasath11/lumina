@@ -1,17 +1,5 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bronze" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff1dc" />
-      <stop offset="0.45" stop-color="#e2ad72" />
-      <stop offset="1" stop-color="#9a6234" />
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.75">
-      <stop offset="0" stop-color="#3a2414" />
-      <stop offset="1" stop-color="#050302" />
-    </radialGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#glow)" />
-  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="url(#bronze)" stroke-width="1.5" opacity="0.8" />
-  <text x="32" y="34" font-family="Didot, 'Bodoni 72', Georgia, 'Times New Roman', serif" font-size="29"
-        letter-spacing="0.5" fill="url(#bronze)" text-anchor="middle" dominant-baseline="central">HP</text>
+  <rect width="64" height="64" rx="15" fill="#1f3f82" />
+  <text x="32" y="33.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="700"
+        letter-spacing="-1" fill="#ffffff" text-anchor="middle" dominant-baseline="central">HP</text>
 </svg>

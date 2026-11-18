@@ -58,14 +58,15 @@ const fragmentShader = /* glsl */ `
     float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
     float crest = wideSheen * 0.5 + crispSpecular * 0.9;
 
-    vec3 c0_shadow = vec3(0.0010, 0.0006, 0.0004);
-    vec3 c0_wave1  = vec3(0.085, 0.040, 0.015);
-    vec3 c0_wave2  = vec3(0.050, 0.022, 0.008);
-    vec3 c0_crest  = vec3(0.45, 0.30, 0.18);
-    vec3 c1_shadow = vec3(0.0004, 0.0006, 0.0012);
-    vec3 c1_wave1  = vec3(0.015, 0.035, 0.065);
-    vec3 c1_wave2  = vec3(0.008, 0.020, 0.045);
-    vec3 c1_crest  = vec3(0.18, 0.35, 0.55);
+    // Midnight blue body with silver crests, deepening toward ink-navy as you scroll
+    vec3 c0_shadow = vec3(0.0006, 0.0009, 0.0020);
+    vec3 c0_wave1  = vec3(0.030, 0.050, 0.105);
+    vec3 c0_wave2  = vec3(0.016, 0.028, 0.065);
+    vec3 c0_crest  = vec3(0.42, 0.47, 0.56);
+    vec3 c1_shadow = vec3(0.0004, 0.0006, 0.0014);
+    vec3 c1_wave1  = vec3(0.020, 0.036, 0.085);
+    vec3 c1_wave2  = vec3(0.010, 0.020, 0.052);
+    vec3 c1_crest  = vec3(0.30, 0.38, 0.52);
 
     float t = smoothstep(0.0, 1.0, scroll);
     vec3 colShadow = mix(c0_shadow, c1_shadow, t);
@@ -281,9 +282,10 @@ export function createStage(canvas) {
     positions[i * 3 + 1] = (Math.random() - 0.5) * 5.0 - 0.5
     positions[i * 3 + 2] = (Math.random() - 0.5) * 6.5
     if (Math.random() < 0.6) {
-      colors[i * 3] = 1.0
-      colors[i * 3 + 1] = 0.4 + Math.random() * 0.15
-      colors[i * 3 + 2] = 0.05 + Math.random() * 0.1
+      const v = 0.82 + Math.random() * 0.18
+      colors[i * 3] = v
+      colors[i * 3 + 1] = v
+      colors[i * 3 + 2] = Math.min(1, v + 0.06)
     } else {
       colors[i * 3] = 0.55 + Math.random() * 0.15
       colors[i * 3 + 1] = 0.82 + Math.random() * 0.12

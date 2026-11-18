@@ -33,42 +33,8 @@ export default function Intro() {
 
         <figure className="founder" aria-hidden="true">
           <span className="founder__light" />
-          <svg className="founder__bench" viewBox="0 0 700 1294" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="bench-top" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#f1c48e" />
-                <stop offset="1" stopColor="#a8703f" />
-              </linearGradient>
-              <linearGradient id="bench-face" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#3b2414" />
-                <stop offset="0.35" stopColor="#7a4a26" />
-                <stop offset="0.6" stopColor="#c48a52" />
-                <stop offset="1" stopColor="#4a2c17" />
-              </linearGradient>
-              <linearGradient id="bench-metal" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#120c08" />
-                <stop offset="0.5" stopColor="#5a3d26" />
-                <stop offset="1" stopColor="#120c08" />
-              </linearGradient>
-            </defs>
-            {/* legs */}
-            <rect x="-70" y="806" width="30" height="488" rx="4" fill="url(#bench-metal)" />
-            <rect x="742" y="806" width="30" height="488" rx="4" fill="url(#bench-metal)" />
-            <rect x="-30" y="806" width="18" height="470" rx="3" fill="url(#bench-metal)" opacity="0.55" />
-            <rect x="714" y="806" width="18" height="470" rx="3" fill="url(#bench-metal)" opacity="0.55" />
-            {/* footrest rail */}
-            <rect x="-70" y="1068" width="842" height="16" rx="8" fill="url(#bench-metal)" />
-            {/* seat: top surface + front face */}
-            <path d="M-92 752 L792 752 L816 774 L-116 774 Z" fill="url(#bench-top)" />
-            <rect x="-116" y="774" width="932" height="40" rx="6" fill="url(#bench-face)" />
-            <rect x="-116" y="774" width="932" height="2" fill="#ffd9a8" opacity="0.7" />
-          </svg>
           <img src={profile.founderPhoto} alt="" />
           <span className="founder__floor" />
-          <figcaption className="founder__tag">
-            <span className="founder__dot" />
-            Co-founder · Glide
-          </figcaption>
         </figure>
 
         <div className="slide" id="slide-1">
